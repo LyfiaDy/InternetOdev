@@ -1,0 +1,43 @@
+@model StudentCourseManagement.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h2>Student Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+
+<h4>Courses</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var course in Model.StudentCourses) {
+        <tr>
+            <td>
+                @course.Course.Title
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div>
+    <a href="/Student/Edit/@Model.StudentId" class="btn btn-warning">Edit</a> |
+    <a href="/Student" class="btn btn-primary">Back to List</a>
+</div>
